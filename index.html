@@ -5,35 +5,58 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Alice's Final Project</title>
+
+  <!--Load the AJAX API-->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', {'packages':['corechart']});
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+
+
+   </script>
 </head>
 <body>
+    <div class="wrapper">
   
-    <header class = "header"><h1>Alice's Final Project for INST377</h1></header>
-    <div class="container">
-        <div class="left_section box">
-    <h2>Form Input</h2>
+        <header class = "header"><h1>Alice's Final Project for INST377</h1></header>
+        <div class="container">
+            <div class="left_section box">
+                <h2>Form Input</h2>
     
 
-    <form action="https://dog.ceo/api/breeds/list/all">
+                <form action="https://dog.ceo/api/breeds/list/all"
+                    class = "box main_form">
 
 
-        <div>
-            <label for="dog">Filter By Dog Breeds</label>
-            <input type="text" name="dog" id="dog"/>
+            <div>
+                <label for="dog">Filter By Dog Breeds</label>
+                <input type="text" name="dog" id="dog"/>
         </div>
-        <button type="button" id = "data_load">Load Dog Data</button>
-        <button type="button" id = "data_load">Generate Dog Data</button>
+                <button type="button" id = "data_load">Load Dog Data</button>
+                <button type="button" id = "data_load">Generate Dog Data</button>
     </form>
     </div>
 
-    <div class="right_section box">
+            <div class="right_section box">
 
-        <h2>Dog Breeds List</h2>
+                <h2>Dog Breeds List</h2>
+                <div id="chart_div" class = "box"></div>
+                <ol class = "box" id = "dog_list">
+                    A list of dog breeds
+                   
+                </ol>
+                <div class = "lds-ellipsis" id = "data_load_animation"><div></div><div></div><div></div><div></div></div>
+    
 
+            </div>
+        </div>
     </div>
-</div>
-
    
 </body>
 </html>
