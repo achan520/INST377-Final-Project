@@ -14,12 +14,7 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
 
-    // Load the Visualization API and the corechart package.
-    google.charts.load('current', {'packages':['corechart']});
-
-    // Set a callback to run when the Google Visualization API is loaded.
-    google.charts.setOnLoadCallback(drawChart);
-
+    
 
    </script>
 </head>
@@ -48,7 +43,9 @@
             <div class="right_section box">
 
                 <h2>Dog Breeds List</h2>
-                <div id="chart_div" class = "box"></div>
+                <div class = "chart_container">
+                    <div id="chart" class = "box"></div>
+                </div>
                 <ol class = "box" id = "dog_list">
                     A list of dog breeds
                    
