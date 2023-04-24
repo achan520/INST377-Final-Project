@@ -91,6 +91,11 @@
     margin-bottom: 1rem;
    }
 
+   .chart_container {
+    height: 120%;
+    width: 120%;
+  }
+
   .box {
     background-color: rgba(239, 239, 239, 0.40);
     border: 2px dashed;
