@@ -53,22 +53,7 @@ function shapeData(array){
 const generateListButton = document.getElementById('generate');
 const dog_list = document.getElementById('dog_list');
 
-/*generateListButton.addEventListener('click', () => {
-  fetch('https://dog.ceo/api/breeds/list/all')
-    .then(response => response.json())
-    .then(data => {
-      // Clear any existing list items
-      dog_list.innerHTML = '';
 
-      // Loop through the breeds and add a new list item for each breed
-      for (const dog in data.message) {
-        const listItem = document.createElement('li');
-        listItem.textContent = dog;
-        dog_list.appendChild(listItem);
-      }
-    })
-    
-});*/
 
 const breedSearch = document.getElementById('breed_search');
 let allBreeds = [];
@@ -79,6 +64,76 @@ generateListButton.addEventListener('click', () => {
         allBreeds = Object.keys(data.message);
         displayBreeds(allBreeds);
   })
+});
+
+const collection = {
+    data: [],
+    add: function(item){
+        this.data.push(item);
+        this.save();
+    },
+
+    //Function to save the collection to localStorage
+    save: function(){
+        localStorage.setItem('collectionData', JSON.stringify(this.data));
+    },
+
+    //Function to load the collection from localStorage
+    load: function(){
+        const saveData = localStorage.getItem('collectionData');
+        if(saveData){
+            this.data = JSON.parse(saveData);
+        }
+
+    },
+
+    //Refresh to do an API call that will swap out the localStorage for something new.
+    refresh: function(){
+        fetch('https://dog.ceo/api/breeds/list/all')
+          .then(response => response.json())
+          .then(data => {
+            if (data.status === 'success') {
+              const dogs = Object.keys(data.message);
+              this.data = dogs;
+              this.save();
+              console.log('Dog breeds data refreshed and stored in the collection.');
+              this.display();
+            } else {
+              console.log('Failed to retrieve dog breeds data from API.');
+            }
+        })
+    }
+       
+}
+
+
+//Get data from API and load into the collection
+fetch('https://dog.ceo/api/breeds/list/all')
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'success') {
+      const dogs = Object.keys(data.message);
+      collection.data = dogs;
+      collection.save(); // Save the collection to localStorage
+      console.log('Dog breeds data loaded and stored in the collection.');
+    } else {
+      console.log('Failed to retrieve dog breeds data from API.');
+    }
+  });
+
+  
+  // Attach click event listener to the refresh button
+  const refreshButton = document.getElementById('refreshButton');
+  refreshButton.addEventListener('click', function() {
+    fetch('https://dog.ceo/api/breeds/list/all')
+    .then(response => response.json())
+    .then(data => {
+        allBreeds = Object.keys(data.message);
+        displayBreeds(allBreeds);
+        
+  })
+    
+
 });
 
 // Function to display a list of breeds
