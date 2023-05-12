@@ -1,6 +1,5 @@
 # Alice's Final Project for INST377
-# Github pages
-https://achan520.github.io/INST377-Final-Project/
+# Github pages 
 #Target browsers:
 - Laptop sized devices
 #Description of Project:
@@ -10,3 +9,5 @@ https://achan520.github.io/INST377-Final-Project/
 - My project is trying to display the different dog breeds and it is trying to examine how common breeding between certain breeds is for dogs. A lot of dogs are a mix, but a lot of times they are not a healthy mix. This is a big problem because some breeds just shouldn’t be mixed together because it can create problems in the future. 
 #CSS Framework Used:
 - I used the modern CSS framework
+
+https://achan520.github.io/INST377-Final-Project/
